@@ -37,7 +37,7 @@ class CategoryView extends StatelessWidget {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  BlocProvider.of<HomeCubit>(context)
+                  HomeCubit.get(context)
                       .getCategoryDetails(id: categories[index].id.toString());
                   GoRouter.of(context).push(AppRouter.categoryDetails,
                       extra: categories[index].id.toString());

@@ -56,7 +56,7 @@ class CategoryDetailsView extends StatelessWidget {
   Widget _buildProductList(BuildContext context, HomeCubit cubit) {
     final cartCubit = BlocProvider.of<CartCubit>(context);
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(16.0),
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

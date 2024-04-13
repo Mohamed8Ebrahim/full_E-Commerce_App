@@ -2,6 +2,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:e_commerce/Core/Cache/cash_helper.dart';
 import 'package:e_commerce/Core/Util/Helper/End_Point.dart';
 import 'package:e_commerce/Core/Shared/Failure.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Data/Repository/repo.dart';
@@ -22,8 +23,16 @@ class RepoImpl implements Repo {
     dio.options.headers = {
       'lang': 'en',
       'Content-Type': 'application/json',
-      if (token != null) 'Authorization': token!,
     };
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          token = await CacheHelper.getData(key: ApiKey.token);
+          options.headers['Authorization'] = token;
+          return handler.next(options);
+        },
+      ),
+    );
   }
 
   @override

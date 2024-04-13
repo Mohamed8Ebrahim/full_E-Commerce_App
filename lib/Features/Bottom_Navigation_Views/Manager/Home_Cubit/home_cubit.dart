@@ -62,12 +62,11 @@ class HomeCubit extends Cubit<HomeState> {
     final response = await repo.get('${EndPoint.categories}/$id');
     response
         .fold((failure) => emit(CategoryDetailsFailure(failure.errorMessage)),
-            (response) {
+            (response) async {
       if (response[ApiKey.status] == true) {
         categoryDetails = (response[ApiKey.data][ApiKey.data] as List)
             .map((dynamic e) => ProductsModel.fromJson(e))
             .toList();
-
         emit(CategoryDetailsSuccess());
       } else {
         emit(CategoryDetailsFailure(response[ApiKey.message].toString()));
@@ -169,5 +168,16 @@ class HomeCubit extends Cubit<HomeState> {
   void setIsAddedToFavorite(String id, bool isLoading) {
     isAddOrRemoveToFavorite[id] = isLoading;
     emit(ChangeFavoritesLoading(id));
+  }
+}
+
+extension HomeCubitExt on HomeCubit {
+  Future<void> getInitialData() async {
+    await Future.wait([
+      getProducts(),
+      getBannerData(),
+      getCategories(),
+      getFavorites(),
+    ]);
   }
 }

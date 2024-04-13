@@ -47,3 +47,4 @@ class ApiKey {
 }
 
 String? token;
+String? recentToken = '';

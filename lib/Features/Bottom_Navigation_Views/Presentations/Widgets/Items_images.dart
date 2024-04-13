@@ -17,10 +17,10 @@ class ItemsImages extends StatelessWidget {
   final BoxFit fit;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius ?? 0),
-      child: AspectRatio(
-        aspectRatio: aspectRatio,
+    return AspectRatio(
+      aspectRatio: aspectRatio,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius ?? 0),
         child: HashCachedImage(
           imageUrl: imageUrl,
           fit: fit,

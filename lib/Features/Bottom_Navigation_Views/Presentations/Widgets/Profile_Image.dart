@@ -32,20 +32,21 @@ class _ProfileImageState extends State<ProfileImage> {
       children: [
         _image == null
             ? SizedBox(
-                height: MediaQuery.of(context).size.height * .23,
-                width: MediaQuery.of(context).size.width * .43,
+                height: MediaQuery.of(context).size.height * .24,
+                width: MediaQuery.of(context).size.width * .4,
                 child: ItemsImages(
-                  imageUrl: widget.userModel?.image ?? '',
+                  imageUrl: widget.userModel!.image!,
                   borderRadius: 400,
+                  fit: BoxFit.cover,
                 ),
               )
             : ClipRRect(
                 borderRadius: BorderRadius.circular(400),
                 child: Image.file(
                   File(_image!),
-                  fit: BoxFit.fill,
-                  height: MediaQuery.of(context).size.height * .23,
-                  width: MediaQuery.of(context).size.width * .43,
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.height * .24,
+                  width: MediaQuery.of(context).size.width * .4,
                 ),
               ),
         Positioned.fromRect(
@@ -55,7 +56,6 @@ class _ProfileImageState extends State<ProfileImage> {
               shape: BoxShape.circle,
               color: Colors.blue.shade400,
               border: Border.all(color: Colors.white, width: 2),
-              //borderRadius: BorderRadius.circular(30),
             ),
             child: InkWell(
               onTap: () async {

@@ -36,7 +36,7 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<ProfileCubit>(context);
+    final cubit = ProfileCubit.get(context);
     return Scaffold(
       body: ViewsBackground(
         child: Center(

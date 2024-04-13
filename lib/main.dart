@@ -25,14 +25,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<HomeCubit>(
-          create: (context) => HomeCubit()..getInitialData(),
+        BlocProvider(
+          create: (context) => HomeCubit(),
         ),
-        BlocProvider<CartCubit>(
-          create: (context) => CartCubit()..getCart(),
+        BlocProvider(
+          create: (context) => CartCubit(),
         ),
-        BlocProvider<ProfileCubit>(
-          create: (context) => ProfileCubit()..profile(),
+        BlocProvider(
+          create: (context) => ProfileCubit(),
         ),
       ],
       child: ScreenUtilInit(
@@ -67,16 +67,5 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-extension HomeCubitExt on HomeCubit {
-  Future<void> getInitialData() async {
-    await Future.wait([
-      getProducts(),
-      getBannerData(),
-      getCategories(),
-      getFavorites(),
-    ]);
   }
 }

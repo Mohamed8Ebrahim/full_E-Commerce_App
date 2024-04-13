@@ -9,6 +9,8 @@ import 'package:e_commerce/Core/Util/Helper/End_Point.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Data/Models/profile_Model.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Data/Repository/repo.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Data/Repository/repo_Impl.dart';
+import 'package:e_commerce/Features/Bottom_Navigation_Views/Manager/Cart_Cubit/cart_cubit.dart';
+import 'package:e_commerce/Features/Bottom_Navigation_Views/Manager/Home_Cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -58,8 +60,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     response.fold((failure) => emit(LogOutFailure(failure.errorMessage)),
         (response) async {
       if (response[ApiKey.status] == true) {
-        await CacheHelper.removeData(key: ApiKey.token).then((value) {
+        await CacheHelper.removeData(key: ApiKey.token).then((value) async {
           if (value) {
+            await resetCubits(context);
             GoRouter.of(context).pushReplacement(AppRouter.starter);
           }
         });
@@ -128,5 +131,24 @@ class ProfileCubit extends Cubit<ProfileState> {
         emit(ChangePasswordFailure(response[ApiKey.message].toString()));
       }
     });
+  }
+
+  Future<void> resetCubits(BuildContext context) async {
+    // Reset each Cubit to its initial state
+    HomeCubit.get(context).emit(HomeInitial());
+    CartCubit.get(context).emit(CartInitial());
+    // Add more Cubits here as needed
+
+    // You may also need to clear lists or sets in each cubit if necessary
+    HomeCubit.get(context).bannerModels.clear();
+    HomeCubit.get(context).categoriesData.clear();
+    HomeCubit.get(context).categoryDetails.clear();
+    HomeCubit.get(context).productsData.clear();
+    HomeCubit.get(context).favorites.clear();
+    HomeCubit.get(context).favoritesIds.clear();
+
+    CartCubit.get(context).carts.clear();
+    CartCubit.get(context).cartsId.clear();
+    CartCubit.get(context).totalPrice = 0;
   }
 }
