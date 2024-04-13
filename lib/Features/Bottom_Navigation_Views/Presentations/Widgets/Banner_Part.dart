@@ -84,8 +84,9 @@ class _BannerPartState extends State<BannerPart> {
               controller: _controller,
               count: cubit.bannerModels.length,
               effect: SlideEffect(
+                radius: 20.sp,
                 dotWidth: 8.w,
-                dotHeight: 8.h,
+                dotHeight: 9.h,
                 paintStyle: PaintingStyle.stroke,
                 strokeWidth: 2.sp,
                 dotColor: Colors.grey,

@@ -32,16 +32,13 @@ class _PickImageWidgetState extends State<PickImageWidget> {
                   backgroundImage: const AssetImage("asset/avatar.png"),
                   child: Stack(
                     children: [
-                      Positioned(
-                        bottom: 8.h,
-                        right: 8.w,
+                      Positioned.fromRect(
+                        rect: Rect.fromLTWH(70, 70, 36.w, 40.h),
                         child: Container(
-                          height: 44.h,
-                          width: 46.w,
                           decoration: BoxDecoration(
                             color: Colors.blue.shade400,
                             border: Border.all(color: Colors.white, width: 3),
-                            borderRadius: BorderRadius.circular(25.spMax),
+                            borderRadius: BorderRadius.circular(50.spMax),
                           ),
                           child: InkWell(
                             onTap: () async {
@@ -60,7 +57,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
                             child: Icon(
                               Icons.camera_alt_sharp,
                               color: Colors.white,
-                              size: 23.sp,
+                              size: 20.sp,
                             ),
                           ),
                         ),

@@ -11,8 +11,8 @@ import 'package:e_commerce/Features/Bottom_Navigation_Views/Presentations/Views/
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Presentations/Views/Product_Details_View.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Presentations/Views/Profile_View.dart';
 import 'package:e_commerce/Features/Bottom_Navigation_Views/Presentations/Views/Change_Password_View.dart';
-import 'package:e_commerce/Features/Registeration/Presentation/Login_View.dart';
-import 'package:e_commerce/Features/Registeration/Presentation/Register_View.dart';
+import 'package:e_commerce/Features/Registeration/Presentation/Views/Login_View.dart';
+import 'package:e_commerce/Features/Registeration/Presentation/Views/Register_View.dart';
 import 'package:e_commerce/Features/Starter/Presentation/Starter_View.dart';
 import 'package:e_commerce/Features/Starter/Presentation/Splash_View.dart';
 import 'package:go_router/go_router.dart';

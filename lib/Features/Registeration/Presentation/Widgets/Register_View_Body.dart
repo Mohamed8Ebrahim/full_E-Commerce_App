@@ -34,7 +34,7 @@ class RegisterViewBody extends StatelessWidget {
       builder: (context, state) {
         return Center(
           child: Stack(
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
             children: [
               Align(
                 alignment: Alignment.topLeft,
@@ -58,7 +58,7 @@ class RegisterViewBody extends StatelessWidget {
                     color: Colors.white,
                     elevation: 10,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Form(
                         key: context.read<RegisterCubit>().signUpFormKey,
                         child: Column(
@@ -68,13 +68,13 @@ class RegisterViewBody extends StatelessWidget {
                             Text(
                               'Sign Up',
                               style: TextStyle(
-                                  fontSize: 30.sp, fontWeight: FontWeight.w700),
+                                  fontSize: 25.sp, fontWeight: FontWeight.w700),
                             ),
                             SizedBox(
-                              height: height * .02,
+                              height: height * .015,
                             ),
                             const PickImageWidget(),
-                            SizedBox(height: height * .03),
+                            SizedBox(height: height * .025),
                             CustomInputField(
                               hintText: "Enter Your Name",
                               obscureText: false,
@@ -104,7 +104,7 @@ class RegisterViewBody extends StatelessWidget {
                               controller:
                                   context.read<RegisterCubit>().signUpPassword,
                             ),
-                            SizedBox(height: height * .05),
+                            SizedBox(height: height * .04),
                             state is RegisterLoading
                                 ? Center(
                                     child:
@@ -125,7 +125,7 @@ class RegisterViewBody extends StatelessWidget {
                                       }
                                     },
                                   ),
-                            SizedBox(height: height * .03),
+                            SizedBox(height: height * .02),
                             const AlreadyHaveAnAccountWidget()
                           ],
                         ),
