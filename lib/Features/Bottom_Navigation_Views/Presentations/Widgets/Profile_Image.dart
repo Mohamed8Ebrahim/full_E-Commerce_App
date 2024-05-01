@@ -32,7 +32,7 @@ class _ProfileImageState extends State<ProfileImage> {
       children: [
         _image == null
             ? SizedBox(
-                height: MediaQuery.of(context).size.height * .24,
+                height: MediaQuery.of(context).size.height * .2,
                 width: MediaQuery.of(context).size.width * .4,
                 child: ItemsImages(
                   imageUrl: widget.userModel!.image!,
@@ -45,7 +45,7 @@ class _ProfileImageState extends State<ProfileImage> {
                 child: Image.file(
                   File(_image!),
                   fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * .24,
+                  height: MediaQuery.of(context).size.height * .2,
                   width: MediaQuery.of(context).size.width * .4,
                 ),
               ),

@@ -39,7 +39,7 @@ class AppBarDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 110.h,
+                      height: 100.h,
                       width: 100.w,
                       child: ItemsImages(
                         imageUrl: data?.image ?? '',
