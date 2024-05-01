@@ -21,6 +21,7 @@ class _PickImageWidgetState extends State<PickImageWidget> {
   String? _image;
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context).size;
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         return SizedBox(
@@ -33,12 +34,13 @@ class _PickImageWidgetState extends State<PickImageWidget> {
                   child: Stack(
                     children: [
                       Positioned.fromRect(
-                        rect: Rect.fromLTWH(70, 70, 36.w, 40.h),
+                        rect: Rect.fromLTWH(
+                            60.w, 60.h, mq.width * .1, mq.height * .1),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.blue.shade400,
                             border: Border.all(color: Colors.white, width: 3),
-                            borderRadius: BorderRadius.circular(50.spMax),
+                            shape: BoxShape.circle,
                           ),
                           child: InkWell(
                             onTap: () async {
