@@ -34,7 +34,7 @@ class RegisterViewBody extends StatelessWidget {
       builder: (context, state) {
         return Center(
           child: Stack(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.center,
             children: [
               Align(
                 alignment: Alignment.topLeft,
